@@ -80,9 +80,9 @@ export const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Endereço</h3>
                 <p className="text-muted-foreground">
-                  Rua das Bicicletas, 123<br />
-                  Centro - Betim/MG<br />
-                  CEP: 32600-000
+                  Av. Campo de Ourique, 1233 <br />
+                   Jardim Alterosa, Betim<br />
+                  CEP: 32660-000
                 </p>
               </div>
             </div>
@@ -94,8 +94,8 @@ export const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Telefone</h3>
                 <p className="text-muted-foreground">
-                  (31) 99999-9999<br />
-                  (31) 3333-3333
+                  (31) 97182-4188<br />
+                  (31) 99445-9872
                 </p>
               </div>
             </div>
@@ -107,7 +107,7 @@ export const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">E-mail</h3>
                 <p className="text-muted-foreground">
-                  contato@bicicletariabetim.com.br
+                  plasciclebetim@gmail.com.br
                 </p>
               </div>
             </div>
@@ -166,7 +166,7 @@ export const Contact = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="(31) 99999-9999"
+                placeholder="(31) 9999-9999"
                 className={errors.phone ? "border-destructive" : ""}
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? "phone-error" : undefined}
