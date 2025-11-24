@@ -31,7 +31,7 @@ export const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Bike className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold text-foreground">Bicicletaria Betim</span>
+            <span className="text-2xl font-bold text-foreground">Plascicle</span>
           </div>
 
           {/* Desktop Navigation */}
