@@ -145,7 +145,7 @@ export const Catalog = () => {
 
   const handleWhatsApp = (productName: string) => {
     const message = `Olá! Tenho interesse no(a) ${productName}. Poderia me dar mais informações?`;
-    window.open(`https://wa.me/5531971824188?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/553135931002?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const filteredProducts = products.filter((product) => {

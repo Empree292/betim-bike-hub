@@ -32,7 +32,7 @@ export const Contact = () => {
       
       const whatsappMessage = `*Nova mensagem do site*%0A%0A*Nome:* ${encodeURIComponent(validatedData.name)}%0A*E-mail:* ${encodeURIComponent(validatedData.email)}%0A*Telefone:* ${encodeURIComponent(validatedData.phone)}%0A*Mensagem:* ${encodeURIComponent(validatedData.message)}`;
       
-      window.open(`https://wa.me/5531971824188?text=${whatsappMessage}`, "_blank");
+      window.open(`https://wa.me/5535931002?text=${whatsappMessage}`, "_blank");
       
       toast.success("Mensagem enviada com sucesso!");
       setFormData({ name: "", email: "", phone: "", message: "" });
@@ -94,8 +94,8 @@ export const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Telefone</h3>
                 <p className="text-muted-foreground">
-                  (31) 97182-4188<br />
-                  (31) 99445-9872
+                  (31) 35931002<br />
+                  
                 </p>
               </div>
             </div>

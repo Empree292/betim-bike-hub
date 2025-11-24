@@ -21,7 +21,7 @@ export const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/plasciclebetim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -65,7 +65,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-secondary-foreground/80">(31) 99999-9999</span>
+                <span className="text-secondary-foreground/80">(31)  35931002</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
