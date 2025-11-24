@@ -59,8 +59,8 @@ export const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-secondary-foreground/80">
-                  Rua das Bicicletas, 123<br />
-                  Centro - Betim/MG
+                  Av. Campo de Ourique, 1233<br />
+                  Jardim Alterosa, Betim - Betim/MG
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -69,7 +69,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-secondary-foreground/80">contato@bicicletariabetim.com.br</span>
+                <span className="text-secondary-foreground/80">plasciclebetim@gmail.com</span>
               </li>
             </ul>
           </div>

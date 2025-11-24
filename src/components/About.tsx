@@ -27,7 +27,7 @@ export const About = () => {
             Sobre Nós
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Há mais de 10 anos levando mobilidade e saúde para Betim. Nossa missão é conectar pessoas 
+            Desde 1995 levando  mobilidade e saúde para Betim. Nossa missão é conectar pessoas 
             ao prazer de pedalar, oferecendo as melhores bicicletas e serviços da região.
           </p>
         </div>
