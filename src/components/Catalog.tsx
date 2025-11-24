@@ -7,8 +7,14 @@ import bikeRoad from "@/assets/bike-road.jpg";
 import bikeElectric from "@/assets/bike-electric.jpg";
 import bikeKids from "@/assets/bike-kids.jpg";
 import bikeBmx from "@/assets/bike-bmx.jpg";
+import productHelmet from "@/assets/product-helmet.jpg";
+import productGloves from "@/assets/product-gloves.jpg";
+import productToolkit from "@/assets/product-toolkit.jpg";
+import productLock from "@/assets/product-lock.jpg";
+import productPump from "@/assets/product-pump.jpg";
+import productBottle from "@/assets/product-bottle.jpg";
 
-const bikes = [
+const products = [
   {
     id: 1,
     name: "Mountain Bike Pro",
@@ -17,6 +23,7 @@ const bikes = [
     image: bikeMountain,
     available: true,
     stock: 3,
+    category: "Bicicletas"
   },
   {
     id: 2,
@@ -26,6 +33,7 @@ const bikes = [
     image: bikeUrban,
     available: true,
     stock: 5,
+    category: "Bicicletas"
   },
   {
     id: 3,
@@ -35,6 +43,7 @@ const bikes = [
     image: bikeRoad,
     available: false,
     stock: 0,
+    category: "Bicicletas"
   },
   {
     id: 4,
@@ -44,6 +53,7 @@ const bikes = [
     image: bikeElectric,
     available: true,
     stock: 2,
+    category: "Bicicletas"
   },
   {
     id: 5,
@@ -53,6 +63,7 @@ const bikes = [
     image: bikeKids,
     available: true,
     stock: 8,
+    category: "Bicicletas"
   },
   {
     id: 6,
@@ -62,12 +73,73 @@ const bikes = [
     image: bikeBmx,
     available: false,
     stock: 0,
+    category: "Bicicletas"
+  },
+  {
+    id: 7,
+    name: "Capacete Aerodinâmico",
+    description: "Proteção máxima com design moderno",
+    price: "R$ 289,00",
+    image: productHelmet,
+    available: true,
+    stock: 12,
+    category: "Acessórios"
+  },
+  {
+    id: 8,
+    name: "Luvas Gel Premium",
+    description: "Conforto e aderência para longos pedais",
+    price: "R$ 119,00",
+    image: productGloves,
+    available: true,
+    stock: 15,
+    category: "Acessórios"
+  },
+  {
+    id: 9,
+    name: "Kit Ferramentas Completo",
+    description: "Tudo que você precisa para manutenção",
+    price: "R$ 349,00",
+    image: productToolkit,
+    available: true,
+    stock: 6,
+    category: "Peças e Manutenção"
+  },
+  {
+    id: 10,
+    name: "Trava de Segurança U-Lock",
+    description: "Máxima segurança contra furtos",
+    price: "R$ 159,00",
+    image: productLock,
+    available: true,
+    stock: 10,
+    category: "Acessórios"
+  },
+  {
+    id: 11,
+    name: "Bomba de Ar com Manômetro",
+    description: "Calibragem precisa e fácil",
+    price: "R$ 89,00",
+    image: productPump,
+    available: false,
+    stock: 0,
+    category: "Peças e Manutenção"
+  },
+  {
+    id: 12,
+    name: "Garrafa Térmica 750ml",
+    description: "Mantém a temperatura ideal por horas",
+    price: "R$ 49,00",
+    image: productBottle,
+    available: true,
+    stock: 20,
+    category: "Acessórios"
   },
 ];
 
 export const Catalog = () => {
-  const handleWhatsApp = (bikeName: string) => {
-    const message = `Olá! Tenho interesse na ${bikeName}. Poderia me dar mais informações?`;
+  const handleWhatsApp = (productName: string) => {
+    const message = `Olá! Tenho interesse no(a) ${productName}. Poderia me dar mais informações?`;
     window.open(`https://wa.me/5531999999999?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -84,51 +156,57 @@ export const Catalog = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {bikes.map((bike, index) => (
+          {products.map((product, index) => (
             <Card 
-              key={bike.id} 
+              key={product.id} 
               className={`group hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-scale-in overflow-hidden ${
-                !bike.available ? 'opacity-75' : ''
+                !product.available ? 'opacity-75' : ''
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="overflow-hidden relative">
                 <img 
-                  src={bike.image} 
-                  alt={bike.name}
+                  src={product.image} 
+                  alt={product.name}
                   className={`w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 ${
-                    !bike.available ? 'grayscale' : ''
+                    !product.available ? 'grayscale' : ''
                   }`}
                 />
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-4 right-4 flex flex-col gap-2">
                   <Badge 
-                    variant={bike.available ? "default" : "secondary"}
+                    variant={product.available ? "default" : "secondary"}
                     className="text-sm font-semibold"
                   >
-                    {bike.available ? "Disponível" : "Indisponível"}
+                    {product.available ? "Disponível" : "Indisponível"}
+                  </Badge>
+                  <Badge 
+                    variant="outline"
+                    className="text-xs"
+                  >
+                    {product.category}
                   </Badge>
                 </div>
               </div>
               <CardHeader>
                 <div className="flex items-start justify-between gap-2">
-                  <CardTitle className="text-2xl">{bike.name}</CardTitle>
+                  <CardTitle className="text-2xl">{product.name}</CardTitle>
                 </div>
-                <CardDescription className="text-base">{bike.description}</CardDescription>
-                {bike.available && (
+                <CardDescription className="text-base">{product.description}</CardDescription>
+                {product.available && (
                   <p className="text-sm text-muted-foreground mt-2">
-                    {bike.stock} {bike.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}
+                    {product.stock} {product.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}
                   </p>
                 )}
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold text-primary mb-4">{bike.price}</p>
+                <p className="text-3xl font-bold text-primary mb-4">{product.price}</p>
                 <Button 
                   className="w-full" 
                   size="lg"
-                  onClick={() => handleWhatsApp(bike.name)}
-                  disabled={!bike.available}
+                  onClick={() => handleWhatsApp(product.name)}
+                  disabled={!product.available}
                 >
-                  {bike.available ? 'Tenho Interesse' : 'Produto Indisponível'}
+                  {product.available ? 'Tenho Interesse' : 'Produto Indisponível'}
                 </Button>
               </CardContent>
             </Card>
