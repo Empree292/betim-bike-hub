@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import bikeMountain from "@/assets/bike-mountain.jpg";
 import bikeUrban from "@/assets/bike-urban.jpg";
 import bikeRoad from "@/assets/bike-road.jpg";
@@ -138,15 +140,45 @@ const products = [
 ];
 
 export const Catalog = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string>("all");
+
   const handleWhatsApp = (productName: string) => {
     const message = `Olá! Tenho interesse no(a) ${productName}. Poderia me dar mais informações?`;
     window.open(`https://wa.me/5531999999999?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const filteredProducts = products.filter((product) => {
+    // Filtro de categoria
+    if (selectedCategory !== "all" && product.category !== selectedCategory) {
+      return false;
+    }
+
+    // Filtro de preço
+    if (selectedPriceRange !== "all") {
+      const price = parseFloat(product.price.replace("R$ ", "").replace(".", "").replace(",", "."));
+      
+      switch (selectedPriceRange) {
+        case "0-500":
+          return price <= 500;
+        case "500-1500":
+          return price > 500 && price <= 1500;
+        case "1500-3000":
+          return price > 1500 && price <= 3000;
+        case "3000+":
+          return price > 3000;
+        default:
+          return true;
+      }
+    }
+
+    return true;
+  });
+
   return (
     <section id="catalogo" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Nosso Catálogo
           </h2>
@@ -155,8 +187,46 @@ export const Catalog = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+        <div className="flex flex-col sm:flex-row gap-4 mb-12 max-w-2xl mx-auto">
+          <div className="flex-1">
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <SelectTrigger className="w-full bg-background">
+                <SelectValue placeholder="Filtrar por categoria" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                <SelectItem value="all">Todas as categorias</SelectItem>
+                <SelectItem value="Bicicletas">Bicicletas</SelectItem>
+                <SelectItem value="Acessórios">Acessórios</SelectItem>
+                <SelectItem value="Peças e Manutenção">Peças e Manutenção</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="flex-1">
+            <Select value={selectedPriceRange} onValueChange={setSelectedPriceRange}>
+              <SelectTrigger className="w-full bg-background">
+                <SelectValue placeholder="Filtrar por preço" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                <SelectItem value="all">Todos os preços</SelectItem>
+                <SelectItem value="0-500">Até R$ 500</SelectItem>
+                <SelectItem value="500-1500">R$ 500 - R$ 1.500</SelectItem>
+                <SelectItem value="1500-3000">R$ 1.500 - R$ 3.000</SelectItem>
+                <SelectItem value="3000+">Acima de R$ 3.000</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-xl text-muted-foreground">
+              Nenhum produto encontrado com os filtros selecionados.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product, index) => (
             <Card 
               key={product.id} 
               className={`group hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-scale-in overflow-hidden ${
@@ -210,8 +280,9 @@ export const Catalog = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
