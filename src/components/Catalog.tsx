@@ -54,8 +54,8 @@ const bikes = [
 
 export const Catalog = () => {
   const handleWhatsApp = (bikeName: string) => {
-    const message = `Olá! Tenho interesse na ${bikeName}. Poderia me dar mais informações?`;
-    window.open(`https://wa.me/5531999999999?text=${encodeURIComponent(message)}`, "_blank");
+  const message = `Olá! Tenho interesse na ${bikeName}. Poderia me dar mais informações?`;
+  window.open(`https://wa.me/5531971824188?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (

@@ -8,7 +8,7 @@ export const Hero = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/5531999999999?text=Olá! Gostaria de saber mais sobre as bicicletas.", "_blank");
+    window.open("https://wa.me/5531971824188?text=Olá! Gostaria de saber mais sobre as bicicletas.", "_blank");
   };
 
   return (
