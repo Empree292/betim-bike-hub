@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import bikeMountain from "@/assets/bike-mountain.jpg";
 import bikeUrban from "@/assets/bike-urban.jpg";
 import bikeRoad from "@/assets/bike-road.jpg";
@@ -14,6 +15,8 @@ const bikes = [
     description: "Perfeita para trilhas e aventuras off-road",
     price: "R$ 2.499,00",
     image: bikeMountain,
+    available: true,
+    stock: 3,
   },
   {
     id: 2,
@@ -21,6 +24,8 @@ const bikes = [
     description: "Ideal para o dia a dia na cidade",
     price: "R$ 1.299,00",
     image: bikeUrban,
+    available: true,
+    stock: 5,
   },
   {
     id: 3,
@@ -28,6 +33,8 @@ const bikes = [
     description: "Alta performance para estradas",
     price: "R$ 3.799,00",
     image: bikeRoad,
+    available: false,
+    stock: 0,
   },
   {
     id: 4,
@@ -35,6 +42,8 @@ const bikes = [
     description: "Tecnologia elétrica para maior conforto",
     price: "R$ 4.999,00",
     image: bikeElectric,
+    available: true,
+    stock: 2,
   },
   {
     id: 5,
@@ -42,6 +51,8 @@ const bikes = [
     description: "Diversão e segurança para crianças",
     price: "R$ 599,00",
     image: bikeKids,
+    available: true,
+    stock: 8,
   },
   {
     id: 6,
@@ -49,6 +60,8 @@ const bikes = [
     description: "Para manobras e estilo radical",
     price: "R$ 1.899,00",
     image: bikeBmx,
+    available: false,
+    stock: 0,
   },
 ];
 
@@ -74,19 +87,38 @@ export const Catalog = () => {
           {bikes.map((bike, index) => (
             <Card 
               key={bike.id} 
-              className="group hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-scale-in overflow-hidden"
+              className={`group hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-scale-in overflow-hidden ${
+                !bike.available ? 'opacity-75' : ''
+              }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="overflow-hidden">
+              <div className="overflow-hidden relative">
                 <img 
                   src={bike.image} 
                   alt={bike.name}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                  className={`w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 ${
+                    !bike.available ? 'grayscale' : ''
+                  }`}
                 />
+                <div className="absolute top-4 right-4">
+                  <Badge 
+                    variant={bike.available ? "default" : "secondary"}
+                    className="text-sm font-semibold"
+                  >
+                    {bike.available ? "Disponível" : "Indisponível"}
+                  </Badge>
+                </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-2xl">{bike.name}</CardTitle>
+                <div className="flex items-start justify-between gap-2">
+                  <CardTitle className="text-2xl">{bike.name}</CardTitle>
+                </div>
                 <CardDescription className="text-base">{bike.description}</CardDescription>
+                {bike.available && (
+                  <p className="text-sm text-muted-foreground mt-2">
+                    {bike.stock} {bike.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}
+                  </p>
+                )}
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold text-primary mb-4">{bike.price}</p>
@@ -94,8 +126,9 @@ export const Catalog = () => {
                   className="w-full" 
                   size="lg"
                   onClick={() => handleWhatsApp(bike.name)}
+                  disabled={!bike.available}
                 >
-                  Tenho Interesse
+                  {bike.available ? 'Tenho Interesse' : 'Produto Indisponível'}
                 </Button>
               </CardContent>
             </Card>
