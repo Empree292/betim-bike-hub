@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Bicicletaria Betim</h3>
+            <h3 className="text-2xl font-bold mb-4">Plascicle Betim</h3>
             <p className="text-secondary-foreground/80 mb-4">
               Sua parceira em mobilidade urbana e aventuras sobre duas rodas.
             </p>

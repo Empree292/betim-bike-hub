@@ -107,7 +107,7 @@ export const Contact = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">E-mail</h3>
                 <p className="text-muted-foreground">
-                  plasciclebetim@gmail.com.br
+                  plasciclebetim@hotmail.com.br
                 </p>
               </div>
             </div>
